@@ -939,6 +939,12 @@ nav.scrolled .nav-container {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.bento-link:hover {
+    background: white;
+    color: var(--accent);
+    transform: scale(1.1) !important;
+}
+
 .bento-item:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
@@ -974,7 +980,7 @@ nav.scrolled .nav-container {
 @media (max-width: 768px) {
     .portfolio-bento-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 200px;
+        grid-auto-rows: 220px;
         gap: 1rem;
     }
     .bento-wide {
@@ -983,14 +989,17 @@ nav.scrolled .nav-container {
     .bento-tall {
         grid-row: span 1;
     }
+    .bento-inner {
+        padding: 1.5rem;
+    }
     .bento-link {
         opacity: 1;
         transform: translate(0, 0);
         bottom: 0;
         right: 0;
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     .bento-text {
         transform: translateY(0);
@@ -1001,6 +1010,7 @@ nav.scrolled .nav-container {
     }
     .bento-icon {
         color: var(--accent);
+        transform: scale(1.1) rotate(-5deg);
     }
 }
 
@@ -1415,12 +1425,15 @@ nav.scrolled .nav-container {
     .container { padding: 0 1.2rem; }
     .portfolio-bento-grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: 220px;
+        grid-auto-rows: 240px;
         gap: 1rem;
     }
     .bento-wide, .bento-tall {
         grid-column: span 1;
         grid-row: span 1;
+    }
+    .bento-inner {
+        padding: 1.5rem;
     }
     .profile-frame { width: 250px; height: 320px; }
     .name { font-size: 2.5rem; }
