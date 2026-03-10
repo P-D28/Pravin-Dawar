@@ -9,12 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
     links.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
         });
     });
 
