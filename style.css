@@ -785,6 +785,7 @@ nav.scrolled {
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 250px;
     gap: 1.5rem;
+    grid-auto-flow: dense;
 }
 
 .bento-item {
@@ -914,6 +915,7 @@ nav.scrolled {
     .portfolio-bento-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 200px;
+        gap: 1rem;
     }
     .bento-wide {
         grid-column: span 2;
@@ -921,16 +923,24 @@ nav.scrolled {
     .bento-tall {
         grid-row: span 1;
     }
-}
-
-@media (max-width: 480px) {
-    .portfolio-bento-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 220px;
+    .bento-link {
+        opacity: 1;
+        transform: translate(0, 0);
+        bottom: 0;
+        right: 0;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
-    .bento-wide, .bento-tall {
-        grid-column: span 1;
-        grid-row: span 1;
+    .bento-text {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .bento-bg {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%);
+    }
+    .bento-icon {
+        color: var(--accent);
     }
 }
 
@@ -1183,6 +1193,7 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
     .portfolio-bento-grid {
         grid-template-columns: 1fr;
         grid-auto-rows: 220px;
+        gap: 1rem;
     }
     .bento-wide, .bento-tall {
         grid-column: span 1;
