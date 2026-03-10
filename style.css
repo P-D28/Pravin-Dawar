@@ -313,40 +313,37 @@ nav.scrolled {
 .logo span { color: var(--accent); }
 
 .logo-svg {
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
     overflow: visible;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.logo-p {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    animation: drawLogo 2s ease forwards;
-}
+.logo-stem { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 0.6s ease forwards; }
+.logo-p { stroke-dasharray: 150; stroke-dashoffset: 150; animation: drawLine 0.8s ease forwards 0.4s; }
+.logo-d { stroke-dasharray: 200; stroke-dashoffset: 200; animation: drawLine 1s ease forwards 0.8s; }
+.logo-nib { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 0.6s ease forwards 0.6s; }
+.logo-nib-slit { stroke-dasharray: 20; stroke-dashoffset: 20; animation: drawLine 0.3s ease forwards 1s; }
 
-.logo-d {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    animation: drawLogo 2s ease forwards 0.5s;
-}
+.logo-handles { opacity: 0; animation: fadeIn 0.5s ease forwards 1.5s; }
+.logo-anchor { opacity: 0; transform-origin: center; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.logo-anchor.top { animation-delay: 0.2s; transform-origin: 26px 12px; }
+.logo-anchor.bottom { animation-delay: 1.2s; transform-origin: 26px 87px; }
 
-@keyframes drawLogo {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes popIn { 0% { opacity: 0; transform: scale(0); } 100% { opacity: 1; transform: scale(1); } }
 
 .logo:hover .logo-svg, .footer-logo:hover .logo-svg {
-    transform: scale(1.1);
-}
-
-.logo:hover .logo-p, .logo:hover .logo-d,
-.footer-logo:hover .logo-p, .footer-logo:hover .logo-d {
-    animation: none;
-    stroke-dashoffset: 0;
+    transform: scale(1.1) rotate(5deg);
     filter: drop-shadow(0 0 8px var(--accent-glow));
 }
+
+.logo:hover .logo-d, .footer-logo:hover .logo-d {
+    animation: march 1s linear infinite;
+}
+
+@keyframes march { to { stroke-dashoffset: -28; } }
 
 .nav-links {
     display: flex;
