@@ -877,6 +877,13 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
     transform: translateY(0);
 }
 
+/* Staggered Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
 /* Responsive */
 @media (max-width: 992px) {
     .hero-content, .about-grid, .featured-card, .edu-cert-grid, .contact-grid {
