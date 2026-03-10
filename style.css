@@ -137,6 +137,38 @@ a, button, input, textarea, .filter-btn, .dot, .socials a, .port-inner {
     100% { background-position: 0 50px; }
 }
 
+/* Background Animated Icons */
+.bg-canvas-icons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bg-icon {
+    position: absolute;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+    opacity: 0.15;
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+    animation: floatIcon 20s infinite ease-in-out;
+}
+
+.icon-1 { top: 15%; left: 10%; font-size: 3rem; animation-duration: 25s; }
+.icon-2 { top: 65%; left: 15%; font-size: 4rem; animation-duration: 22s; animation-direction: reverse; }
+.icon-3 { top: 25%; right: 12%; font-size: 3.5rem; animation-duration: 28s; }
+.icon-4 { top: 75%; right: 18%; font-size: 2.5rem; animation-duration: 20s; animation-direction: reverse; }
+.icon-5 { top: 10%; left: 50%; font-size: 2.8rem; animation-duration: 24s; }
+.icon-6 { top: 85%; left: 45%; font-size: 3.2rem; animation-duration: 26s; animation-direction: reverse; }
+.icon-7 { top: 45%; left: 5%; font-size: 2.2rem; animation-duration: 21s; }
+.icon-8 { top: 50%; right: 5%; font-size: 3rem; animation-duration: 23s; animation-direction: reverse; }
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    33% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+    66% { transform: translateY(20px) rotate(-10deg) scale(0.9); }
+}
+
 /* Typography & Utilities */
 h1, h2, h3, .logo {
     font-family: var(--font-hero);
@@ -456,6 +488,7 @@ nav.scrolled {
 
 .badge-1 { top: 10%; left: -5%; animation-delay: -1s; }
 .badge-2 { bottom: 15%; right: -5%; animation-delay: -2s; }
+.badge-3 { bottom: -5%; left: 40%; animation-delay: -3s; }
 
 @keyframes morph {
     0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
