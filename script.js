@@ -138,4 +138,36 @@ document.addEventListener('DOMContentLoaded', () => {
             glow2.style.transform = `translate(${mouseX * -50}px, ${mouseY * -50}px)`;
         }
     });
+
+    // Custom Cursor Logic
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Add a slight delay to the outline for a trailing effect
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    // Add hover effect to interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .port-inner');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+            cursorOutline.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+            cursorOutline.classList.remove('hover');
+        });
+    });
 });
