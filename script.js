@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Portfolio Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const portfolioItems = document.querySelectorAll('.bento-item');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -143,31 +143,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
 
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+    // Check if device supports touch
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+    if (!isTouchDevice) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-        // Add a slight delay to the outline for a trailing effect
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-    // Add hover effect to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .port-inner');
-
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorDot.classList.add('hover');
-            cursorOutline.classList.add('hover');
+            // Add a slight delay to the outline for a trailing effect
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
         });
-        el.addEventListener('mouseleave', () => {
-            cursorDot.classList.remove('hover');
-            cursorOutline.classList.remove('hover');
+
+        // Add hover effect to interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .bento-inner');
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorDot.classList.add('hover');
+                cursorOutline.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorDot.classList.remove('hover');
+                cursorOutline.classList.remove('hover');
+            });
         });
-    });
+    } else {
+        // Hide custom cursor elements on touch devices
+        if (cursorDot) cursorDot.style.display = 'none';
+        if (cursorOutline) cursorOutline.style.display = 'none';
+        document.body.style.cursor = 'auto';
+        
+        // Restore default cursor for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .bento-inner');
+        interactiveElements.forEach(el => {
+            el.style.cursor = 'pointer';
+        });
+    }
 });
