@@ -154,6 +154,19 @@ a, button, input, textarea, .filter-btn, .dot, .socials a, .port-inner {
     animation: floatIcon 20s infinite ease-in-out;
 }
 
+.adobe-icon {
+    font-family: var(--font-hero);
+    font-weight: 700;
+    border: 1px solid var(--accent);
+    border-radius: 15%;
+    padding: 0.15em 0.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
 .icon-1 { top: 15%; left: 10%; font-size: 3rem; animation-duration: 25s; }
 .icon-2 { top: 65%; left: 15%; font-size: 4rem; animation-duration: 22s; animation-direction: reverse; }
 .icon-3 { top: 25%; right: 12%; font-size: 3.5rem; animation-duration: 28s; }
