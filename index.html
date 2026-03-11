@@ -36,36 +36,25 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" class="sci-fi-nav">
         <div class="nav-container">
-            <a href="#hero" class="logo">
-                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <g class="logo-handles">
-                        <line x1="26" y1="12" x2="71" y2="12" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
-                        <circle cx="71" cy="12" r="3" fill="var(--accent)"/>
-                        <line x1="26" y1="87" x2="71" y2="87" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
-                        <circle cx="71" cy="87" r="3" fill="var(--accent)"/>
-                    </g>
-                    <path class="logo-d" d="M 26 12 C 86 12 86 87 26 87" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 6"/>
-                    <path class="logo-p" d="M 26 12 C 56 12 56 47 26 47" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                    <path class="logo-stem" d="M 26 12 L 26 62" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                    <path class="logo-nib" d="M 26 62 L 14 74 L 26 95 L 38 74 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
-                    <line class="logo-nib-slit" x1="26" y1="74" x2="26" y2="85" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                    <rect class="logo-anchor top" x="22" y="8" width="8" height="8" fill="var(--bg-main)" stroke="currentColor" stroke-width="2"/>
-                    <rect class="logo-anchor bottom" x="22" y="83" width="8" height="8" fill="var(--bg-main)" stroke="var(--accent)" stroke-width="2"/>
-                </svg>
-                PD<span>.</span>
+            <a href="#hero" class="logo sci-fi-logo">
+                <span class="logo-text" data-text="PRVN">PRVN</span>
+                <span class="sys-status"><span class="pulse-dot"></span> SYS.ONLINE</span>
             </a>
             <div class="nav-menu-wrapper">
-                <ul class="nav-links">
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#work" class="nav-link">Work</a></li>
+                <ul class="nav-links sci-fi-links">
+                    <li><a href="#about" class="nav-link" data-text="01.ABOUT">01.ABOUT</a></li>
+                    <li><a href="#services" class="nav-link" data-text="02.SKILLS">02.SKILLS</a></li>
+                    <li><a href="#experience" class="nav-link" data-text="03.EXP">03.EXP</a></li>
+                    <li><a href="#work" class="nav-link" data-text="04.WORK">04.WORK</a></li>
                 </ul>
             </div>
             <div class="nav-actions">
-                <a href="#contact" class="btn btn-primary nav-cta">Let's Talk</a>
+                <a href="#contact" class="btn sci-fi-btn nav-cta">
+                    <span class="btn-edge"></span>
+                    INITIATE_CONTACT
+                </a>
                 <div class="hamburger"><i class="fas fa-bars"></i></div>
             </div>
         </div>
@@ -443,60 +432,50 @@
     </section>
 
     <!-- Footer -->
-    <footer class="modern-footer">
+    <footer class="sci-fi-footer">
+        <div class="footer-grid-bg"></div>
         <div class="container">
+            <div class="footer-top-border"></div>
             <div class="footer-top">
-                <h2 class="footer-heading">Let's create something <span class="text-accent">extraordinary.</span></h2>
-                <a href="#contact" class="btn btn-primary footer-cta">Start a Project <i class="fas fa-arrow-right"></i></a>
+                <h2 class="footer-heading glitch-text" data-text="SYSTEM.TERMINATE">SYSTEM.TERMINATE</h2>
+                <a href="#contact" class="btn sci-fi-btn footer-cta">
+                    <span class="btn-edge"></span>
+                    INITIATE_PROJECT
+                </a>
             </div>
             
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <g class="logo-handles">
-                                <line x1="26" y1="12" x2="71" y2="12" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
-                                <circle cx="71" cy="12" r="3" fill="var(--accent)"/>
-                                <line x1="26" y1="87" x2="71" y2="87" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
-                                <circle cx="71" cy="87" r="3" fill="var(--accent)"/>
-                            </g>
-                            <path class="logo-d" d="M 26 12 C 86 12 86 87 26 87" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 6"/>
-                            <path class="logo-p" d="M 26 12 C 56 12 56 47 26 47" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                            <path class="logo-stem" d="M 26 12 L 26 62" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                            <path class="logo-nib" d="M 26 62 L 14 74 L 26 95 L 38 74 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
-                            <line class="logo-nib-slit" x1="26" y1="74" x2="26" y2="85" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                            <rect class="logo-anchor top" x="22" y="8" width="8" height="8" fill="var(--bg-main)" stroke="currentColor" stroke-width="2"/>
-                            <rect class="logo-anchor bottom" x="22" y="83" width="8" height="8" fill="var(--bg-main)" stroke="var(--accent)" stroke-width="2"/>
-                        </svg>
-                        PD<span>.</span>
+                    <div class="footer-logo sci-fi-logo">
+                        <span class="logo-text" data-text="PRVN">PRVN</span>
                     </div>
-                    <p class="footer-bio">Elevating brands through strategic design, intuitive interfaces, and creative AI solutions.</p>
+                    <p class="footer-bio terminal-text">> Elevating brands through strategic design, intuitive interfaces, and creative AI solutions. <span class="blink">_</span></p>
                 </div>
                 
                 <div class="footer-links-group">
-                    <h4>Navigation</h4>
+                    <h4>// DIRECTORIES</h4>
                     <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#work">Portfolio</a></li>
+                        <li><a href="#hero" data-text="> HOME">> HOME</a></li>
+                        <li><a href="#about" data-text="> ABOUT">> ABOUT</a></li>
+                        <li><a href="#services" data-text="> SKILLS">> SKILLS</a></li>
+                        <li><a href="#work" data-text="> PORTFOLIO">> PORTFOLIO</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links-group">
-                    <h4>Socials</h4>
+                    <h4>// NETWORK</h4>
                     <ul>
-                        <li><a href="https://www.behance.net/pravindawar28" target="_blank">Behance</a></li>
-                        <li><a href="https://linkedin.com/in/pravindawar28" target="_blank">LinkedIn</a></li>
-                        <li><a href="mailto:ppdg2815@gmail.com">Email Me</a></li>
+                        <li><a href="https://www.behance.net/pravindawar28" target="_blank" data-text="> BEHANCE">> BEHANCE</a></li>
+                        <li><a href="https://linkedin.com/in/pravindawar28" target="_blank" data-text="> LINKEDIN">> LINKEDIN</a></li>
+                        <li><a href="mailto:ppdg2815@gmail.com" data-text="> EMAIL">> EMAIL</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Pravin Dawar. All rights reserved.</p>
-                <div class="footer-status">
-                    <span class="status-dot"></span> Available for freelance work
+                <p class="copyright">&copy; 2026 PRVN. ALL SYSTEMS NOMINAL.</p>
+                <div class="footer-status sys-status">
+                    <span class="pulse-dot"></span> FREELANCE_MODE: ACTIVE
                 </div>
             </div>
         </div>
