@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
 
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.cursor = 'auto';
         
         // Restore default cursor for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
         interactiveElements.forEach(el => {
             el.style.cursor = 'pointer';
         });
