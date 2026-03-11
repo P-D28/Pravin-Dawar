@@ -50,8 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-    // Active Navigation Highlight
+    // Active Navigation Highlight & Shuttle Animation
     const sections = document.querySelectorAll('section');
+    const navShuttle = document.querySelector('.nav-shuttle');
+    
+    function updateShuttlePosition(link) {
+        if (!navShuttle || !link) return;
+        const linkRect = link.getBoundingClientRect();
+        const containerRect = document.querySelector('.island-links').getBoundingClientRect();
+        
+        navShuttle.style.width = `${linkRect.width}px`;
+        navShuttle.style.transform = `translateX(${linkRect.left - containerRect.left}px)`;
+    }
+
     function updateActiveLink() {
         let current = '';
         sections.forEach(section => {
@@ -62,13 +73,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        let activeLink = null;
         links.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href').includes(current)) {
                 link.classList.add('active');
+                activeLink = link;
+            }
+        });
+        
+        if (activeLink) {
+            updateShuttlePosition(activeLink);
+        }
+    }
+
+    // Initialize shuttle position
+    setTimeout(updateActiveLink, 100);
+
+    // Hover effect for shuttle
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            updateShuttlePosition(link);
+        });
+    });
+
+    const navLinksContainer = document.querySelector('.island-links');
+    if (navLinksContainer) {
+        navLinksContainer.addEventListener('mouseleave', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            if (activeLink) {
+                updateShuttlePosition(activeLink);
+            } else {
+                navShuttle.style.width = '0px';
             }
         });
     }
+
+    // Local Time Updater
+    function updateLocalTime() {
+        const timeElement = document.getElementById('local-time');
+        if (!timeElement) return;
+        
+        const now = new Date();
+        const options = { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            timeZoneName: 'short' 
+        };
+        timeElement.textContent = now.toLocaleTimeString('en-US', options);
+    }
+    
+    updateLocalTime();
+    setInterval(updateLocalTime, 60000); // Update every minute
 
     // Portfolio Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -94,6 +150,87 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Portfolio Modal Logic
+    const modal = document.getElementById('portfolio-modal');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modalClose = document.querySelector('.modal-close');
+    
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modal-category');
+    const modalDesc = document.getElementById('modal-description');
+    const modalTechList = document.getElementById('modal-tech-list');
+    const modalDemoLink = document.getElementById('modal-demo-link');
+    const modalCaseLink = document.getElementById('modal-case-link');
+
+    function openModal(item) {
+        // Get data from attributes
+        const title = item.getAttribute('data-title');
+        const category = item.getAttribute('data-category');
+        const desc = item.getAttribute('data-description');
+        const tech = item.getAttribute('data-tech');
+        const demo = item.getAttribute('data-demo');
+        const caseStudy = item.getAttribute('data-case');
+
+        // Populate modal
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalCategory) {
+            modalCategory.textContent = category === 'uiux' ? 'UI/UX Design' : category === 'branding' ? 'Branding' : 'AI Projects';
+        }
+        if (modalDesc) modalDesc.textContent = desc;
+        
+        // Populate tech list
+        if (modalTechList) {
+            modalTechList.innerHTML = '';
+            if (tech) {
+                const techArray = tech.split(',');
+                techArray.forEach(t => {
+                    const li = document.createElement('li');
+                    li.textContent = t.trim();
+                    modalTechList.appendChild(li);
+                });
+            }
+        }
+
+        // Setup links
+        if (modalDemoLink) {
+            if (demo && demo !== '#') {
+                modalDemoLink.href = demo;
+                modalDemoLink.style.display = 'inline-flex';
+            } else {
+                modalDemoLink.style.display = 'none';
+            }
+        }
+
+        if (modalCaseLink) {
+            if (caseStudy && caseStudy !== '#') {
+                modalCaseLink.href = caseStudy;
+                modalCaseLink.style.display = 'inline-flex';
+            } else {
+                modalCaseLink.style.display = 'none';
+            }
+        }
+
+        // Show modal
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => openModal(item));
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
     // Testimonial Slider
     const slides = document.querySelectorAll('.testi-slide');

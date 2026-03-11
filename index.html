@@ -36,28 +36,37 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="holo-nav">
-        <div class="nav-container">
-            <a href="#hero" class="logo holo-logo">
-                <span class="logo-icon"><i class="fas fa-fingerprint"></i></span>
-                <span class="logo-text">PRVN</span>
+    <header id="navbar" class="ultra-header">
+        <div class="header-left">
+            <a href="#hero" class="custom-logo-link">
+                <svg class="pd-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- P -->
+                    <path class="logo-path" d="M 25 85 L 25 15 L 55 15 C 75 15, 75 50, 55 50 L 25 50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- AI Sparkle -->
+                    <path class="logo-sparkle" d="M 75 55 C 75 65, 85 75, 95 75 C 85 75, 75 85, 75 95 C 75 85, 65 75, 55 75 C 65 75, 75 65, 75 55 Z" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">Pravin.</span>
             </a>
-            <div class="nav-menu-wrapper">
-                <ul class="nav-links holo-links">
+        </div>
+        <div class="header-center">
+            <nav class="island-nav nav-menu-wrapper">
+                <ul class="island-links nav-links">
+                    <div class="nav-shuttle"></div>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Skills</a></li>
+                    <li><a href="#services" class="nav-link">Expertise</a></li>
                     <li><a href="#experience" class="nav-link">Experience</a></li>
                     <li><a href="#work" class="nav-link">Work</a></li>
                 </ul>
-            </div>
-            <div class="nav-actions">
-                <a href="#contact" class="btn holo-btn nav-cta">
-                    <span>Connect</span>
-                </a>
-                <div class="hamburger"><i class="fas fa-bars"></i></div>
-            </div>
+            </nav>
         </div>
-    </nav>
+        <div class="header-right">
+            <a href="#contact" class="magnetic-btn nav-cta">
+                <span class="btn-text">Let's Talk</span>
+                <div class="btn-bg"></div>
+            </a>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section id="hero" class="hero holo-hero">
@@ -243,7 +252,7 @@
                 <button class="filter-btn" data-filter="ai">AI Projects</button>
             </div>
             <div class="portfolio-bento-grid">
-                <div class="bento-item reveal delay-100" data-category="uiux">
+                <div class="bento-item reveal delay-100" data-category="uiux" data-title="App Interface" data-description="A sleek and modern mobile app interface designed to enhance user engagement and streamline navigation. Features a dark mode UI with vibrant accent colors." data-tech="Figma, Adobe XD, Prototyping" data-demo="#" data-case="#">
                     <div class="bento-inner">
                         <div class="bento-bg"></div>
                         <div class="bento-content">
@@ -252,11 +261,11 @@
                                 <h4>App Interface</h4>
                                 <p>UI/UX Design</p>
                             </div>
-                            <a href="#" class="bento-link"><i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="bento-link"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bento-item bento-wide reveal delay-200" data-category="branding">
+                <div class="bento-item bento-wide reveal delay-200" data-category="branding" data-title="Corporate Identity" data-description="Comprehensive branding package including logo design, typography selection, color palette, and brand guidelines for a tech startup." data-tech="Illustrator, Photoshop, Brand Strategy" data-demo="#" data-case="#">
                     <div class="bento-inner">
                         <div class="bento-bg"></div>
                         <div class="bento-content">
@@ -265,11 +274,11 @@
                                 <h4>Corporate Identity</h4>
                                 <p>Branding</p>
                             </div>
-                            <a href="#" class="bento-link"><i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="bento-link"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bento-item bento-tall reveal delay-300" data-category="ai">
+                <div class="bento-item bento-tall reveal delay-300" data-category="ai" data-title="Midjourney Concept" data-description="Exploratory visual concepts generated using Midjourney, refined and composited in Photoshop to create surreal, high-fidelity marketing assets." data-tech="Midjourney, Photoshop, Prompt Engineering" data-demo="#" data-case="#">
                     <div class="bento-inner">
                         <div class="bento-bg"></div>
                         <div class="bento-content">
@@ -278,11 +287,11 @@
                                 <h4>Midjourney Concept</h4>
                                 <p>AI Projects</p>
                             </div>
-                            <a href="#" class="bento-link"><i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="bento-link"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bento-item reveal delay-100" data-category="uiux">
+                <div class="bento-item reveal delay-100" data-category="uiux" data-title="Dashboard Design" data-description="A complex data visualization dashboard designed for a SaaS platform. Focuses on clarity, data hierarchy, and actionable insights." data-tech="Figma, UI Components, Data Viz" data-demo="#" data-case="#">
                     <div class="bento-inner">
                         <div class="bento-bg"></div>
                         <div class="bento-content">
@@ -291,11 +300,11 @@
                                 <h4>Dashboard Design</h4>
                                 <p>Web Design</p>
                             </div>
-                            <a href="#" class="bento-link"><i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="bento-link"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bento-item reveal delay-200" data-category="branding">
+                <div class="bento-item reveal delay-200" data-category="branding" data-title="Social Media Kit" data-description="A cohesive set of social media templates designed to boost brand consistency across Instagram, Twitter, and LinkedIn." data-tech="Photoshop, Canva, Layout Design" data-demo="#" data-case="#">
                     <div class="bento-inner">
                         <div class="bento-bg"></div>
                         <div class="bento-content">
@@ -304,11 +313,11 @@
                                 <h4>Social Media Kit</h4>
                                 <p>Client Work</p>
                             </div>
-                            <a href="#" class="bento-link"><i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="bento-link"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bento-item bento-wide reveal delay-300" data-category="ai">
+                <div class="bento-item bento-wide reveal delay-300" data-category="ai" data-title="Veo 3 Generation" data-description="High-quality AI video generation using Veo 3, creating seamless motion graphics and cinematic sequences from text prompts." data-tech="Veo 3, Premiere Pro, Video Editing" data-demo="#" data-case="#">
                     <div class="bento-inner">
                         <div class="bento-bg"></div>
                         <div class="bento-content">
@@ -317,7 +326,7 @@
                                 <h4>Veo 3 Generation</h4>
                                 <p>AI Projects</p>
                             </div>
-                            <a href="#" class="bento-link"><i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="bento-link"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -444,56 +453,81 @@
     </section>
 
     <!-- Footer -->
-    <footer class="sci-fi-footer">
-        <div class="footer-grid-bg"></div>
+    <footer class="ultra-footer">
+        <div class="footer-marquee">
+            <div class="marquee-content">
+                <span>AVAILABLE FOR WORK — LET'S COLLABORATE — </span>
+                <span>AVAILABLE FOR WORK — LET'S COLLABORATE — </span>
+                <span>AVAILABLE FOR WORK — LET'S COLLABORATE — </span>
+                <span>AVAILABLE FOR WORK — LET'S COLLABORATE — </span>
+            </div>
+        </div>
         <div class="container">
-            <div class="footer-top-border"></div>
-            <div class="footer-top">
-                <h2 class="footer-heading glitch-text" data-text="SYSTEM.TERMINATE">SYSTEM.TERMINATE</h2>
-                <a href="#contact" class="btn sci-fi-btn footer-cta">
-                    <span class="btn-edge"></span>
-                    INITIATE_PROJECT
+            <div class="footer-massive">
+                <h2 class="massive-text">LET'S <br> <span class="text-outline">TALK</span></h2>
+                <a href="#contact" class="circle-cta">
+                    <svg viewBox="0 0 100 100"><path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/></svg>
+                    <text><textPath href="#circlePath">GET IN TOUCH • START A PROJECT • </textPath></text>
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-            
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo sci-fi-logo">
-                        <span class="logo-text" data-text="PRVN">PRVN</span>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom-grid">
+                <div class="footer-col">
+                    <span class="col-label">Local Time</span>
+                    <p class="col-value" id="local-time">--:--</p>
+                </div>
+                <div class="footer-col">
+                    <span class="col-label">Socials</span>
+                    <div class="social-links-minimal">
+                        <a href="https://www.behance.net/pravindawar28" target="_blank">Behance</a>
+                        <a href="https://linkedin.com/in/pravindawar28" target="_blank">LinkedIn</a>
                     </div>
-                    <p class="footer-bio terminal-text">> Elevating brands through strategic design, intuitive interfaces, and creative AI solutions. <span class="blink">_</span></p>
                 </div>
-                
-                <div class="footer-links-group">
-                    <h4>// DIRECTORIES</h4>
-                    <ul>
-                        <li><a href="#hero" data-text="> HOME">> HOME</a></li>
-                        <li><a href="#about" data-text="> ABOUT">> ABOUT</a></li>
-                        <li><a href="#services" data-text="> SKILLS">> SKILLS</a></li>
-                        <li><a href="#work" data-text="> PORTFOLIO">> PORTFOLIO</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links-group">
-                    <h4>// NETWORK</h4>
-                    <ul>
-                        <li><a href="https://www.behance.net/pravindawar28" target="_blank" data-text="> BEHANCE">> BEHANCE</a></li>
-                        <li><a href="https://linkedin.com/in/pravindawar28" target="_blank" data-text="> LINKEDIN">> LINKEDIN</a></li>
-                        <li><a href="mailto:ppdg2815@gmail.com" data-text="> EMAIL">> EMAIL</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <span class="col-label">Contact</span>
+                    <a href="mailto:ppdg2815@gmail.com" class="col-value email-link">ppdg2815@gmail.com</a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 PRVN. ALL SYSTEMS NOMINAL.</p>
-                <div class="footer-status sys-status">
-                    <span class="pulse-dot"></span> FREELANCE_MODE: ACTIVE
-                </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 Pravin Dawar. Crafted with intent.</p>
+                <a href="#hero" class="back-to-top-text">Back to top <i class="fas fa-arrow-up"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top -->
     <a href="#hero" class="back-to-top" id="btt"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="portfolio-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h3 id="modal-title">Project Title</h3>
+                    <p id="modal-category" class="modal-category">Category</p>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-desc-section">
+                        <h4>About the Project</h4>
+                        <p id="modal-description">Project description goes here.</p>
+                    </div>
+                    <div class="modal-tech-section">
+                        <h4>Technologies Used</h4>
+                        <ul id="modal-tech-list" class="tech-list">
+                            <!-- Tech items injected via JS -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="#" id="modal-demo-link" class="btn btn-primary" target="_blank">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                    <a href="#" id="modal-case-link" class="btn btn-outline" target="_blank">Case Study <i class="fas fa-book-open"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
