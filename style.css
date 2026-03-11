@@ -1025,7 +1025,7 @@ ul { list-style: none; }
 /* Portfolio Bento Grid */
 .filter-container {
     display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .filter-btn {
@@ -1042,6 +1042,29 @@ ul { list-style: none; }
 .filter-btn.active, .filter-btn:hover {
     background: var(--accent);
     border-color: var(--accent);
+}
+
+.tag-filter-container {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem;
+    margin-bottom: 3rem;
+}
+
+.tag-filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.tag-filter-btn.active, .tag-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .portfolio-bento-grid {
@@ -1124,6 +1147,23 @@ ul { list-style: none; }
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.bento-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.bento-tags span {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    color: var(--text-muted);
 }
 
 .bento-link {

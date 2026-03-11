@@ -127,27 +127,48 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateLocalTime, 60000); // Update every minute
 
     // Portfolio Filtering
+    let currentCategory = 'all';
+    let currentTag = 'all';
+
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const tagFilterBtns = document.querySelectorAll('.tag-filter-btn');
     const portfolioItems = document.querySelectorAll('.bento-item');
+
+    function applyFilters() {
+        portfolioItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            const itemTagsAttr = item.getAttribute('data-tags');
+            const itemTags = itemTagsAttr ? itemTagsAttr.split(',') : [];
+            
+            const categoryMatch = currentCategory === 'all' || itemCategory === currentCategory;
+            const tagMatch = currentTag === 'all' || itemTags.includes(currentTag);
+            
+            if (categoryMatch && tagMatch) {
+                item.style.display = 'block';
+                setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => { item.style.display = 'none'; }, 300);
+            }
+        });
+    }
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            currentCategory = btn.getAttribute('data-filter');
+            applyFilters();
+        });
+    });
 
-            const filterValue = btn.getAttribute('data-filter');
-
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => { item.style.display = 'none'; }, 300);
-                }
-            });
+    tagFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tagFilterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTag = btn.getAttribute('data-tag');
+            applyFilters();
         });
     });
 
@@ -301,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
 
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -320,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.cursor = 'auto';
         
         // Restore default cursor for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
         interactiveElements.forEach(el => {
             el.style.cursor = 'pointer';
         });
