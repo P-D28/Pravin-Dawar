@@ -198,6 +198,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Lightbox Logic
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+
+    if (lightboxModal && lightboxImg) {
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxCaption.textContent = img.alt;
+                lightboxModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                lightboxImg.classList.remove('zoomed');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        lightboxImg.addEventListener('click', () => {
+            lightboxImg.classList.toggle('zoomed');
+        });
+    }
+
     // Portfolio Modal Logic
     const modal = document.getElementById('portfolio-modal');
     const modalOverlay = document.querySelector('.modal-overlay');
@@ -348,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img');
 
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -367,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.cursor = 'auto';
         
         // Restore default cursor for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img');
         interactiveElements.forEach(el => {
             el.style.cursor = 'pointer';
         });
