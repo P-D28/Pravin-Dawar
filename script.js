@@ -50,19 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-    // Active Navigation Highlight & Shuttle Animation
+    // Active Navigation Highlight
     const sections = document.querySelectorAll('section');
-    const navShuttle = document.querySelector('.nav-shuttle');
     
-    function updateShuttlePosition(link) {
-        if (!navShuttle || !link) return;
-        const linkRect = link.getBoundingClientRect();
-        const containerRect = document.querySelector('.island-links').getBoundingClientRect();
-        
-        navShuttle.style.width = `${linkRect.width}px`;
-        navShuttle.style.transform = `translateX(${linkRect.left - containerRect.left}px)`;
-    }
-
     function updateActiveLink() {
         let current = '';
         sections.forEach(section => {
@@ -73,41 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        let activeLink = null;
         links.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href').includes(current)) {
                 link.classList.add('active');
-                activeLink = link;
             }
         });
-        
-        if (activeLink) {
-            updateShuttlePosition(activeLink);
-        }
     }
 
-    // Initialize shuttle position
+    // Initialize active link
     setTimeout(updateActiveLink, 100);
-
-    // Hover effect for shuttle
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            updateShuttlePosition(link);
-        });
-    });
-
-    const navLinksContainer = document.querySelector('.island-links');
-    if (navLinksContainer) {
-        navLinksContainer.addEventListener('mouseleave', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) {
-                updateShuttlePosition(activeLink);
-            } else {
-                navShuttle.style.width = '0px';
-            }
-        });
-    }
 
     // Local Time Updater
     function updateLocalTime() {
@@ -416,52 +381,4 @@ document.addEventListener('DOMContentLoaded', () => {
             glow2.style.transform = `translate(${mouseX * -50}px, ${mouseY * -50}px)`;
         }
     });
-
-    // Custom Cursor Logic
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    // Check if device supports touch
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (!isTouchDevice) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Add a slight delay to the outline for a trailing effect
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img, .lightbox-btn');
-
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorDot.classList.add('hover');
-                cursorOutline.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorDot.classList.remove('hover');
-                cursorOutline.classList.remove('hover');
-            });
-        });
-    } else {
-        // Hide custom cursor elements on touch devices
-        if (cursorDot) cursorDot.style.display = 'none';
-        if (cursorOutline) cursorOutline.style.display = 'none';
-        document.body.style.cursor = 'auto';
-        
-        // Restore default cursor for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img, .lightbox-btn');
-        interactiveElements.forEach(el => {
-            el.style.cursor = 'pointer';
-        });
-    }
 });
