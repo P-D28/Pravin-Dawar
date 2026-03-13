@@ -203,18 +203,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxImg = document.getElementById('lightbox-image');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
     const galleryImages = document.querySelectorAll('.gallery-item img');
+
+    let currentLightboxGroup = [];
+    let currentLightboxIndex = 0;
 
     if (lightboxModal && lightboxImg) {
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxCaption.textContent = img.alt;
+                // Determine group
+                const slider = img.closest('.gallery-slider');
+                if (slider) {
+                    currentLightboxGroup = Array.from(slider.querySelectorAll('img'));
+                    currentLightboxIndex = currentLightboxGroup.indexOf(img);
+                    lightboxPrev.style.display = 'flex';
+                    lightboxNext.style.display = 'flex';
+                } else {
+                    currentLightboxGroup = [img];
+                    currentLightboxIndex = 0;
+                    lightboxPrev.style.display = 'none';
+                    lightboxNext.style.display = 'none';
+                }
+
+                updateLightboxImage();
                 lightboxModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                lightboxImg.classList.remove('zoomed');
             });
         });
+
+        function updateLightboxImage() {
+            const img = currentLightboxGroup[currentLightboxIndex];
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt;
+            lightboxImg.classList.remove('zoomed');
+        }
+
+        if (lightboxPrev && lightboxNext) {
+            lightboxPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentLightboxGroup.length > 1) {
+                    currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxGroup.length) % currentLightboxGroup.length;
+                    updateLightboxImage();
+                }
+            });
+
+            lightboxNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentLightboxGroup.length > 1) {
+                    currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxGroup.length;
+                    updateLightboxImage();
+                }
+            });
+        }
 
         lightboxClose.addEventListener('click', () => {
             lightboxModal.classList.remove('active');
@@ -222,13 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         lightboxModal.addEventListener('click', (e) => {
-            if (e.target === lightboxModal) {
+            if (e.target === lightboxModal || (e.target.closest('.lightbox-card') === null && e.target !== lightboxPrev && e.target !== lightboxNext && e.target !== lightboxImg)) {
                 lightboxModal.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
 
-        lightboxImg.addEventListener('click', () => {
+        lightboxImg.addEventListener('click', (e) => {
+            e.stopPropagation();
             lightboxImg.classList.toggle('zoomed');
         });
     }
@@ -383,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img, .lightbox-btn');
 
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -402,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.cursor = 'auto';
         
         // Restore default cursor for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner, .gallery-item img, .lightbox-close, .lightbox-img, .lightbox-btn');
         interactiveElements.forEach(el => {
             el.style.cursor = 'pointer';
         });

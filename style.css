@@ -2018,10 +2018,11 @@ header#navbar:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -2031,19 +2032,71 @@ header#navbar:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) {
     opacity: 1;
 }
 
-.lightbox-img {
+.lightbox-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
     max-width: 90%;
-    max-height: 85vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: calc(85vh - 80px);
     object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 4px;
     transition: transform 0.3s ease;
     cursor: zoom-in;
 }
 
 .lightbox-img.zoomed {
-    transform: scale(1.5);
+    transform: scale(1.8);
     cursor: zoom-out;
+}
+
+.lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.lightbox-btn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.lightbox-btn.prev {
+    left: -22px;
+}
+
+.lightbox-btn.next {
+    right: -22px;
+}
+
+@media (max-width: 768px) {
+    .lightbox-btn.prev { left: 10px; }
+    .lightbox-btn.next { right: 10px; }
 }
 
 .lightbox-close {
@@ -2063,9 +2116,10 @@ header#navbar:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) {
 }
 
 .lightbox-caption {
-    color: #fff;
-    margin-top: 15px;
-    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-top: 1rem;
+    font-size: 1.1rem;
     font-family: var(--font-body);
     text-align: center;
+    font-weight: 500;
 }
