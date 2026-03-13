@@ -172,6 +172,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Gallery Slider Logic
+    const gallerySliders = document.querySelectorAll('.gallery-slider');
+    gallerySliders.forEach(slider => {
+        const slides = slider.querySelectorAll('.slide');
+        const prevBtn = slider.querySelector('.prev');
+        const nextBtn = slider.querySelector('.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSlide(currentSlide - 1);
+            });
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSlide(currentSlide + 1);
+            });
+        }
+    });
+
     // Portfolio Modal Logic
     const modal = document.getElementById('portfolio-modal');
     const modalOverlay = document.querySelector('.modal-overlay');
@@ -322,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner');
 
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -341,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.cursor = 'auto';
         
         // Restore default cursor for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .dot, .socials a, .holo-socials a, .bento-inner');
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .filter-btn, .tag-filter-btn, .slider-btn, .dot, .socials a, .holo-socials a, .bento-inner');
         interactiveElements.forEach(el => {
             el.style.cursor = 'pointer';
         });
