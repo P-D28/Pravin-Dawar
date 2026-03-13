@@ -128,23 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Portfolio Filtering
     let currentCategory = 'all';
-    let currentTag = 'all';
 
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const tagFilterBtns = document.querySelectorAll('.tag-filter-btn');
-    const portfolioItems = document.querySelectorAll('.bento-item');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
     function applyFilters() {
-        portfolioItems.forEach(item => {
+        galleryItems.forEach(item => {
             const itemCategory = item.getAttribute('data-category');
-            const itemTagsAttr = item.getAttribute('data-tags');
-            const itemTags = itemTagsAttr ? itemTagsAttr.split(',') : [];
             
             const categoryMatch = currentCategory === 'all' || itemCategory === currentCategory;
-            const tagMatch = currentTag === 'all' || itemTags.includes(currentTag);
             
-            if (categoryMatch && tagMatch) {
-                item.style.display = 'block';
+            if (categoryMatch) {
+                item.style.display = 'flex';
                 setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
             } else {
                 item.style.opacity = '0';
@@ -159,15 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentCategory = btn.getAttribute('data-filter');
-            applyFilters();
-        });
-    });
-
-    tagFilterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tagFilterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentTag = btn.getAttribute('data-tag');
             applyFilters();
         });
     });
@@ -274,6 +260,34 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             lightboxImg.classList.toggle('zoomed');
         });
+
+        // Touch swipe support for lightbox
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lightboxModal.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        lightboxModal.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (currentLightboxGroup.length <= 1) return;
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swipe left -> next
+                currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxGroup.length;
+                updateLightboxImage();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swipe right -> prev
+                currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxGroup.length) % currentLightboxGroup.length;
+                updateLightboxImage();
+            }
+        }
     }
 
     // Portfolio Modal Logic
