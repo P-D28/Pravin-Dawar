@@ -329,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
         item.addEventListener('click', () => openModal(item));
     });
