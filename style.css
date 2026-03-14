@@ -177,9 +177,10 @@ ul { list-style: none; }
     margin-bottom: 3rem;
     text-align: center;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-title::after {
@@ -863,60 +864,111 @@ ul { list-style: none; }
     margin-bottom: 2rem;
 }
 
-.tools-container {
+.tools-bento {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tool-card {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem 1rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 1rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
 }
 
-.tool-tag {
-    background: var(--bg-card);
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    border: 1px solid var(--border);
-    font-weight: 500;
-    transition: var(--transition);
+.tool-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(17, 24, 39, 0.8);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
-.tool-tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: scale(1.05);
+.tool-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--text-main), var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
 }
 
-.ai-tag {
+.tool-name {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.tool-card.ai-tool {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+.tool-card.ai-tool:hover {
     background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.3);
-    color: #60a5fa;
+    box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2);
+}
+
+.tool-card.ai-tool .tool-icon {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tool-card:hover .tool-icon {
+    transform: scale(1.1);
 }
 
 /* Experience Timeline */
 .timeline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
     position: relative;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding-top: 40px;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    top: 0; left: 20px;
-    width: 2px; height: 100%;
+    top: 9px; left: 0;
+    width: 100%; height: 2px;
     background: var(--border);
 }
 
 .timeline-item {
     position: relative;
-    padding-left: 60px;
-    margin-bottom: 3rem;
+    padding-left: 0;
+    margin-bottom: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .timeline-item:last-child { margin-bottom: 0; }
 
 .timeline-dot {
     position: absolute;
-    top: 0; left: 11px;
+    top: -40px; 
+    left: 50%;
+    transform: translateX(-50%);
     width: 20px; height: 20px;
     border-radius: 50%;
     background: var(--bg-main);
@@ -930,11 +982,16 @@ ul { list-style: none; }
     border-radius: var(--radius);
     border: 1px solid var(--border);
     transition: var(--transition);
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .timeline-content:hover {
     border-color: var(--accent);
-    transform: translateX(10px);
+    transform: translateY(-10px);
 }
 
 .timeline-content .date {
@@ -1888,10 +1945,34 @@ ul { list-style: none; }
     
     .section { padding: 4rem 0; }
     .hero-content, .about-grid, .contact-grid { gap: 2rem; }
-    .timeline::before { left: 10px; }
-    .timeline-dot { left: 1px; }
-    .timeline-item { padding-left: 40px; }
-    .timeline-content { padding: 1.5rem; }
+    .timeline {
+        flex-direction: column;
+        padding-top: 0;
+        gap: 3rem;
+    }
+    .timeline::before {
+        width: 2px;
+        height: 100%;
+        left: 10px;
+        top: 0;
+    }
+    .timeline-item {
+        padding-left: 40px;
+        margin-bottom: 0;
+    }
+    .timeline-dot {
+        left: 1px;
+        top: 0;
+        transform: none;
+    }
+    .timeline-content {
+        padding: 1.5rem;
+        text-align: left;
+        align-items: flex-start;
+    }
+    .timeline-content:hover {
+        transform: translateX(10px);
+    }
     .edu-card { padding: 1.5rem; }
     .service-card { padding: 1.5rem; }
     .contact-form { padding: 2rem; }
